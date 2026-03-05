@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PickPlaceAnnotationV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "completion_status",
+    "summary",
+    "events"
+  ],
+  "properties": {
+    "completion_status": {
+      "type": "string",
+      "enum": ["completed", "partial", "failed", "uncertain"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "start_s",
+          "end_s",
+          "confidence",
+          "actor_robot",
+          "target_object",
+          "evidence_frame_ids",
+          "notes"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "enum": [
+              "setup",
+              "reach",
+              "grasp",
+              "lift",
+              "transport",
+              "align",
+              "place",
+              "release",
+              "retreat",
+              "idle",
+              "uncertain"
+            ]
+          },
+          "start_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "actor_robot": {
+            "type": "string",
+            "enum": ["blue", "red", "unknown"]
+          },
+          "target_object": {
+            "type": "string",
+            "enum": [
+              "red",
+              "blue",
+              "green",
+              "yellow",
+              "orange",
+              "black",
+              "unknown"
+            ]
+          },
+          "evidence_frame_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

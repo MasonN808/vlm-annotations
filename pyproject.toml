@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vlm-pipeline"
+version = "0.1.0"
+description = "Local video intelligence pipeline with detection/tracking, ASR, and summarization"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Codex"}]
+dependencies = [
+  "httpx==0.28.1",
+  "huggingface_hub>=0.34.0,<1.0",
+  "jsonschema==4.23.0",
+  "pyarrow==18.1.0",
+  "PyYAML==6.0.2",
+]
+
+[project.optional-dependencies]
+ml = [
+  "accelerate==1.2.1",
+  "bitsandbytes==0.44.1",
+  "faster-whisper==1.1.1",
+  "lapx>=0.5.2",
+  "sentencepiece==0.2.0",
+  "torch==2.5.1",
+  "transformers==4.48.0",
+  "ultralytics==8.3.20",
+]
+dev = [
+  "pytest==8.3.4",
+]
+
+[project.scripts]
+pipeline = "vlm_pipeline.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"

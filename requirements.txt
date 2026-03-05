@@ -1,0 +1,14 @@
+httpx==0.28.1
+accelerate==1.2.1
+bitsandbytes==0.44.1
+faster-whisper==1.1.1
+huggingface_hub>=0.34.0,<1.0
+jsonschema==4.23.0
+lapx>=0.5.2
+pyarrow==18.1.0
+PyYAML==6.0.2
+pytest==8.3.4
+sentencepiece==0.2.0
+torch==2.5.1
+transformers==4.48.0
+ultralytics==8.3.20
